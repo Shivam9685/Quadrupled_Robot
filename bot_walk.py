@@ -52,9 +52,6 @@ def robot_stepsim( body_id, body_pos, body_orn, body2feet ):
     fr_index, fl_index, br_index, bl_index = 3, 7, 11, 15
     maxForce = 2 #N/m
     
-    #####################################################################################
-    #####   kinematics Model: Input body orientation, deviation and foot position    ####
-    #####   and get the angles, neccesary to reach that position, for every joint    ####
     fr_angles, fl_angles, br_angles, bl_angles , body2feet_ = robotKinematics.solve( body_orn , body_pos , body2feet )
     #move movable joints
     for i in range(3):
