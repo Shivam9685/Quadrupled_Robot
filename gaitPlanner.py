@@ -20,8 +20,6 @@ class trotGait:
         self.alpha = 0.
         self.s = False
     
-    """This trajectory planning is mostly based on: 
-    https://www.researchgate.net/publication/332374021_Leg_Trajectory_Planning_for_Quadruped_Robots_with_High-Speed_Trot_Gait"""
     def calculateStance(self , phi_st , V , angle):#phi_st between [0,1), angle in degrees
         c = np.cos(np.deg2rad(angle))#cylindrical coordinates
         s = np.sin(np.deg2rad(angle))
@@ -38,7 +36,6 @@ class trotGait:
         
         
     def calculateBezier_swing(self , phi_sw , V , angle):#phi between [0,1), angle in degrees
-    #curve generator https://www.desmos.com/calculator/xlpbe9bgll
         c = np.cos(np.deg2rad(angle))#cylindrical coordinates
         s = np.sin(np.deg2rad(angle))
 #        if (phi >= 0.75 or phi < 0.25):
@@ -50,38 +47,11 @@ class trotGait:
 ##            print('foot UP', self.s , phi)
             
         
-        X = np.abs(V)*c*np.array([-0.05 ,
-                                  -0.06 ,
-                                  -0.07 , 
-                                  -0.07 ,
-                                  0. ,
-                                  0. , 
-                                  0.07 ,
-                                  0.07 ,
-                                  0.06 ,
-                                  0.05 ])
+        X = np.abs(V)*c*np.array([-0.05 , -0.06 , -0.07 , -0.07 , 0. , 0. , 0.07 , 0.07 , 0.06 , 0.05 ])
     
-        Y = np.abs(V)*s*np.array([ 0.05 ,
-                                   0.06 ,
-                                   0.07 , 
-                                   0.07 ,
-                                   0. ,
-                                   -0. , 
-                                   -0.07 ,
-                                   -0.07 ,
-                                   -0.06 ,
-                                   -0.05 ])
+        Y = np.abs(V)*s*np.array([ 0.05 , 0.06 , 0.07 , 0.07 , 0. , -0. , -0.07 , -0.07 , -0.06 , -0.05 ])
     
-        Z = np.abs(V)*np.array([0. ,
-                                0. ,
-                                0.05 , 
-                                0.05 ,
-                                0.05 ,
-                                0.06 , 
-                                0.06 ,
-                                0.06 ,
-                                0. ,
-                                0. ])
+        Z = np.abs(V)*np.array([0. , 0. , 0.05 , 0.05 , 0.05 , 0.06 , 0.06 , 0.06 , 0. , 0. ])
         swingX = 0.
         swingY = 0.
         swingZ = 0.
@@ -173,7 +143,7 @@ class trotGait:
         return self.bodytoFeet
     
     def calculateBezier_swing(self , phi_sw , V , angle):#phi between [0,1), angle in degrees
-    #curve generator https://www.desmos.com/calculator/xlpbe9bgll
+   
         c = np.cos(np.deg2rad(angle))#cylindrical coordinates
         s = np.sin(np.deg2rad(angle))
 #        if (phi >= 0.75 or phi < 0.25):
@@ -185,38 +155,11 @@ class trotGait:
 ##            print('foot UP', self.s , phi)
             
         
-        X = np.abs(V)*c*np.array([-0.05 ,
-                                  -0.06 ,
-                                  -0.07 , 
-                                  -0.07 ,
-                                  0. ,
-                                  0. , 
-                                  0.07 ,
-                                  0.07 ,
-                                  0.06 ,
-                                  0.05 ])
+        X = np.abs(V)*c*np.array([-0.05 , -0.06 , -0.07 , -0.07 ,0. , 0. , 0.07 , 0.07 , 0.06 , 0.05 ])
     
-        Y = np.abs(V)*s*np.array([ 0.05 ,
-                                   0.06 ,
-                                   0.07 , 
-                                   0.07 ,
-                                   0. ,
-                                   -0. , 
-                                   -0.07 ,
-                                   -0.07 ,
-                                   -0.06 ,
-                                   -0.05 ])
+        Y = np.abs(V)*s*np.array([ 0.05 , 0.06 , 0.07 , 0.07 ,0. , -0. , -0.07 ,-0.07 ,-0.06 ,-0.05 ])
     
-        Z = np.abs(V)*np.array([0. ,
-                                0. ,
-                                0.05 , 
-                                0.05 ,
-                                0.05 ,
-                                0.06 , 
-                                0.06 ,
-                                0.06 ,
-                                0. ,
-                                0. ])
+        Z = np.abs(V)*np.array([0. , 0. , 0.05 , 0.05 , 0.05 , 0.06 , 0.06 , 0.06 , 0. , 0. ])
         swingX = 0.
         swingY = 0.
         swingZ = 0.
