@@ -11,25 +11,6 @@ def checkdomain(D):
             return D
     else:
         return D
-#this is based on this paper: 
-#"https://www.researchgate.net/publication/320307716_Inverse_Kinematic_Analysis_Of_A_Quadruped_Robot"
-"""
-"using pybullet frame"
-"  z                     "
-"    |                   "
-"    |                   "
-"    |    /  y           "
-"    |   /               "
-"    |  /                "
-"    | /                 "
-"    |/____________  x       "
-"""
-
-#targetPos = [0 , np.pi/4. , -np.pi/2., 0 ,#BR
-#             0 , np.pi/4. , -np.pi/2., 0 ,#BL
-#             0 , -np.pi/4. , np.pi/2., 0 ,#FL
-#             0 , -np.pi/4. , np.pi/2., 0 ]#FR
-#IK equations written in pybullet frame.
 def solve_FR(coord , coxa , femur , tibia): 
     D = (coord[1]**2+coord[2]**2-coxa**2+coord[0]**2-femur**2-tibia**2)/(2*tibia*femur)  #siempre <1
     D = checkdomain(D)
@@ -66,14 +47,3 @@ def solve_BL(coord , coxa , femur , tibia):
     angles = np.array([tetta, alpha-np.pi/4., gamma+np.pi/2.])
     return angles
 
-    #gamma = numpy.arctan2(-numpy.sqrt(1-D**2),D)
-    #tetta = -numpy.arctan2(coord[2],coord[1])-numpy.arctan2(numpy.sqrt(coord[1]**2+(-coord[2])**2-coxa**2),coxa)
-    #alpha = numpy.arctan2(-coord[0],numpy.sqrt(coord[1]**2+(-coord[2])**2-coxa**2))-numpy.arctan2(tibia*numpy.sin(gamma),femur+tibia*numpy.cos(gamma))
-    #angles = numpy.array([-tetta, alpha, gamma])
-    #    return angles
-#def IK_solver(coord_FR, coord_FL, coord_BR, coord_BL, coxa, femur, tibia):
-    #angles_FR = solve_FR(coord_FR, coxa, femur, tibia)
-    #angles_FL = solve_FL(coord_FL, coxa, femur, tibia)
-    #angles_BR = solve_BR(coord_BR, coxa, femur, tibia)
-    #angles_BL = solve_BL(coord_BL, coxa, femur, tibia)
-    #return angles_FR, angles_FL, angles_BR, angles_BL
