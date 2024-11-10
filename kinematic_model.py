@@ -2,20 +2,6 @@ import numpy as np
 import IK_solver 
 import geometrics
 
-    #####################################################################################
-    #####   kinematics Model: Input body orientation, deviation and foot position    ####
-    #####   and get the angles, neccesary to reach that position, for every joint    ####
-"""
-"using pybullet frame"
-"  z                     "
-"    |                   "
-"    |                   "
-"    |    /  y           "
-"    |   /               "
-"    |  /                "
-"    | /                 "
-"    |/_____________  x       "
-"""
 class robotKinematics:
     def __init__(self):
         self.targetAngs = np.matrix([0 , 0 , -0, 0 ,#BR
